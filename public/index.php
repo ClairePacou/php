@@ -3,10 +3,13 @@
 require_once '../includes/config.php';
 
 
-if(isset($_POST['title'])&& isset($_POST['content'])){
+if(isset($_POST['title'])&& isset($_POST['content'])&& isset($_POST['mots_cles'])){
     $titre = $_POST['title'];
+    $motscles = $_POST['mots_cles'];
     $contenu = $_POST['content'];
-    get_post_formulaire($titre,$contenu);
+
+
+    get_post_formulaire($titre,$motscles,$contenu);
 }
 
 
@@ -29,7 +32,8 @@ $categories = get_all_categories();
             <?php foreach($posts as $post): ?>
                 <div class="col-md-4">
                     <h2><?= $post['title'] ?></h2>
-                    <p><?= $post['content'] ?></p>
+                    <p><?= $post['mots_cles'] ?></p>
+                    <p><?= get_resume($post['content']) ?></p>
                     <a href="http://localhost/iut-tp-blog-master/public/article.php?id=<?php echo $post['id'] ?>" ><input type="button" name="En savoir plus"value="En savoir plus"/> </a>
                      <a href="http://localhost/iut-tp-blog-master/public/supp.php?id=<?php  echo $post['id'] ?>" ><input type="button" name="Supprimer"value="Supprimer"/> </a>
                      <a href="http://localhost/iut-tp-blog-master/public/modif.php?id=<?php echo $post['id'] ?>" ><input type="button" name="Modifier"value="Modifier"/> </a>

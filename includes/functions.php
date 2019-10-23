@@ -22,20 +22,28 @@ function get_post($id)
     return $sth->fetch();
 }
 
-function get_post_formulaire($titre,$contenu)
+function get_post_formulaire($titre,$motscles,$contenu)
 {
 	global $db;
-    $sth = $db->prepare("INSERT INTO posts(title,content) VALUES(:title, :content)");
+    $sth = $db->prepare("INSERT INTO posts(title,mots_cles,content) VALUES(:title,:mots_cles,:content)");
 	$sth->bindParam(':title', $titre);
 	$sth->bindParam(':content', $contenu);
+    $sth->bindParam(':mots_cles', $motscles);
 	$sth->execute();
 
 }
 
-function modif_post($titre,$contenu,$id)
+function modif_post($titre,$contenu,$motscles,$id)
 {
     global $db;
-    $req = $db->prepare('UPDATE posts SET title = ?, content = ?, WHERE id = ?');
-    $req->execute(array($title, $content, $id));
+    $req = $db->prepare('UPDATE posts SET title = ?, content = ?, mots_cles = ? WHERE id = ?');
+    $req->execute(array($title,$motscles,$content,$id));
 
+}
+
+function get_resume($resume)
+{
+$maximum_carac=200;
+$resume = substr($resume,0,$maximum_carac);
+return $resume;
 }

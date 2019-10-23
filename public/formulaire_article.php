@@ -19,6 +19,10 @@ require_once '../includes/config.php';
     <label for="">Titre de l'article</label>
     <input name="title" type="text" class="form-control" id="" placeholder="Entrer le titre">
      </div>
+      <div class="form-group">
+    <label for="">Mots clés</label>
+    <input name="mots_cles" type="text" class="form-control" id="" placeholder="Entrer les mots clés">
+     </div>
      <div class="form-group">
     <label for="">Contenu de l'article</label>
     <textarea name="content" class="form-control" id="" rows="10"></textarea>

@@ -16,6 +16,8 @@ $post =get_post($id);
 </head>
 <body>
     <h1> <?php echo $post['title'] ?></h1>
+    <p> <?php echo $post['mots_cles'] ?></p>
     <p> <?php echo $post['content'] ?></p>
+
 </body>
 </html>
